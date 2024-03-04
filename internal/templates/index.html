@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My thoughts</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body> 
+    <div class="logo-wrapper">
+        <img class= "logo" src="/img/logo.png" alt="there should be logo">
+    </div>
+    <div class="container">
+        <h1>Articles</h1>
+        <h2>total pages are {{.totalPages}}</h2>
+        <h2>current page is {{.currentPage}}</h2>
+        <ul>
+            {{range .articles}}
+            <a href="/article/:{{.ID}}"><li>{{.Title}}</li></a>
+            {{end}}
+        </ul>
+        <div class="pagination">
+            {{if gt .currentPage 1}}
+            <a href="?page={{.PrevPage}}">Prev</a>
+            {{end}}
+            {{if lt .currentPage .totalPages}}
+            <a href="?page={{.NextPage}}">Next</a>
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>
